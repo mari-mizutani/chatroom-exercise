@@ -27,4 +27,12 @@ io.on('connection', (socket) => {
         io.emit('usercnt',counter);
     })
 
+    socket.on("sendmsg",(msg)=>{
+        io.emit("sendmsg",msg);
+    })
+
+    socket.on("/",function(req,res){
+        res.sendFile(__dirname+"/client/index.html"); //server will catch emit and send message to all clients
+    })
+
 });
