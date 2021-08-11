@@ -122,9 +122,3 @@ Make a chatroom to hang out with your friends and families
 For the nice to haves, you definitely will need to research the documentation for a lot of them.
 Go check it out at https://socket.io/docs/v4 
 
-
-## MSN is BACK BABY
-
-Can't wait to see what you come up with!
-
-![agif!](https://media.giphy.com/media/11ZSwQNWba4YF2/giphy.gif)

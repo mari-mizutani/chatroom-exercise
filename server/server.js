@@ -18,5 +18,13 @@ let counter = 0;
 
 io.on('connection', (socket) => {
     console.log(counter+' someone connected');
-});
+    counter++;
 
+    io.emit('usercnt',counter); //io.emit sends data to all clients. Catch it on client with "usercnt"
+    socket.on('disconnect',()=>{
+        counter--;
+        console.log('a user disconnected, and now '+ counter+' ppl connected');
+        io.emit('usercnt',counter);
+    })
+
+});
