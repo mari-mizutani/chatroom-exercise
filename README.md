@@ -1,7 +1,7 @@
 # Chatroom exercise
 
 ## The Mission
-Now that you guys know how to configure a node server, let's make a chatroom to hang out with your friends and families!
+Make a chatroom to hang out with your friends and families
 
 ### Steps
 
