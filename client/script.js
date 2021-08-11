@@ -5,8 +5,8 @@ let sendBtn = document.getElementById('send');
 let keepBtn = document.getElementById('keep');
 let targetArea = document.getElementById('messages');
 
-socket.on("sendmsg",(msg)=>{
-    targetArea.innerHTML+=msg+"<br>";
+socket.on("sendmsg",(message)=>{
+    targetArea.innerHTML+=message+"<br>";
 })
 
 sendBtn.addEventListener("click",()=>{
@@ -14,5 +14,5 @@ sendBtn.addEventListener("click",()=>{
 })
 
 keepBtn.addEventListener("click",()=>{
-    
+    targetArea.innerHTML+=message.value+"<br>";
 })

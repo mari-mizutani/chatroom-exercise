@@ -27,8 +27,8 @@ io.on('connection', (socket) => {
         io.emit('usercnt',counter);
     })
 
-    socket.on("sendmsg",(msg)=>{
-        io.emit("sendmsg",msg);
+    socket.on("sendmsg",(message)=>{
+        io.emit("sendmsg",message);
     })
 
     socket.on("/",function(req,res){
