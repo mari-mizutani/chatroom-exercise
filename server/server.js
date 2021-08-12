@@ -28,13 +28,13 @@ io.on('connection', (socket) => {
     });
 
     //This is an observer that waits until the message "sendToAll" gets passed to the server.
-    socket.on("sendToAll",(message)=>{
+    socket.on("sendToAll",(data)=>{
         // the server will now send the call to 'displayMessage' to ALL clients connected and also passes the message back as a parameter.
-        io.emit("displayMessage",(message));
+        io.emit("displayMessage",(data));
     });
 
-    socket.on("sendToMe",(message)=>{
-        socket.emit("displayMessage",(message));
+    socket.on("sendToMe",(data)=>{
+        socket.emit("displayMessage",(data));
     });
 
 
