@@ -25,14 +25,21 @@ io.on('connection', (socket) => {
         counter--;
         console.log('a user disconnected, and now '+ counter+' ppl connected');
         io.emit('usercnt',counter);
-    })
+    });
 
-    socket.on("sendmsg",(message)=>{
-        io.emit("sendmsg",message);
-    })
+    //This is an observer that waits until the message "sendToAll" gets passed to the server.
+    socket.on("sendToAll",(message)=>{
+        // the server will now send the call to 'displayMessage' to ALL clients connected and also passes the message back as a parameter.
+        io.emit("displayMessage",(message));
+    });
 
-    socket.on("/",function(req,res){
-        res.sendFile(__dirname+"/client/index.html"); //server will catch emit and send message to all clients
-    })
+    socket.on("sendToMe",(message)=>{
+        socket.emit("displayMessage",(message));
+    });
+
+
+    socket.on("/",(req,res)=>{
+        res.sendFile(__dirname+"/client/index.html"); //on the server will catch emit and send message to all clients
+    });
 
 });

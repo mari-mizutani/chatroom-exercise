@@ -5,14 +5,14 @@ let sendBtn = document.getElementById('send');
 let keepBtn = document.getElementById('keep');
 let targetArea = document.getElementById('messages');
 
-socket.on("sendmsg",(message)=>{
+socket.on("displayMessage",(message)=>{ //catch the message which server sends on client
     targetArea.innerHTML+=message+"<br>";
 })
 
 sendBtn.addEventListener("click",()=>{
- socket.emit("sendmsg",message.value); //send data to server
+ socket.emit("sendToAll",message.value); //send data to server
 })
 
 keepBtn.addEventListener("click",()=>{
-    targetArea.innerHTML+=message.value+"<br>";
+    socket.emit("sendToMe",message.value); //send data to yourself
 })
