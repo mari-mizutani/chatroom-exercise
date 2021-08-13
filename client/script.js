@@ -6,6 +6,13 @@ let sendBtn = document.getElementById('send');
 let keepBtn = document.getElementById('keep');
 let targetArea = document.getElementById('messages');
 let showCounter = document.getElementById("counter");
+let memberList = document.getElementById("member");
+
+
+// Counter on the screen
+socket.on("usercnt", counter => {
+    showCounter.innerHTML=counter;
+});
 
 //send data to server
 sendBtn.addEventListener("click",()=>{
@@ -24,12 +31,11 @@ keepBtn.addEventListener("click",()=>{
 });
 
 //catch the name and message which server sends on client
-socket.on("displayMessage",(data)=>{ 
+socket.on("displayMessage", data =>{ 
     targetArea.innerHTML+="<strong class='text-info'>" + data.name + ": </strong>" + data.message + "<br>";
-});
 
+    let list = document.createElement("li"); 
+    list.innerHTML = data.name;
 
-// Counter on the screen
-socket.on("usercnt", (counter) => {
-    showCounter.innerHTML=counter;
+    memberList.appendChild(list);
 });

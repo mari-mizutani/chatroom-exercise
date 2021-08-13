@@ -1,22 +1,20 @@
 const express = require('express');
 const http = require('http');
-
 const app = express(); //To define our application
-
 const clientPath = `${__dirname}/../client`; //To give the path to our client
 app.use(express.static(clientPath));//To use express to host the client
+
 const server = http.createServer(app); // To use http to serve the app that express provides
+const io = require('socket.io')(server); //To require socket.io
 
 server.listen(8080, () =>{
     console.log("server running on "+ 8080);
 }); // To get the server live
 
 
-const io = require('socket.io')(server); //To require socket.io
-
 let counter = 0;
 
-io.on('connection', (socket) => {
+io.on('connection', socket => {
     console.log(counter+' someone connected');
     counter++;
 
@@ -28,13 +26,13 @@ io.on('connection', (socket) => {
     });
 
     //This is an observer that waits until the message "sendToAll" gets passed to the server.
-    socket.on("sendToAll",(data)=>{
+    socket.on("sendToAll", data =>{
         // the server will now send the call to 'displayMessage' to ALL clients connected and also passes the message back as a parameter.
-        io.emit("displayMessage",(data));
+        io.emit("displayMessage",data);
     });
 
-    socket.on("sendToMe",(data)=>{
-        socket.emit("displayMessage",(data));
+    socket.on("sendToMe",data =>{
+        socket.emit("displayMessage",data);
     });
 
 

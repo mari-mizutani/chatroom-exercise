@@ -33,3 +33,5 @@ Make a chatroom to hang out with your friends and families
 - [ ] Make a login / registration (a bit more difficult)
     - again, security is not a must
 - [ ] PIMP IT
+
+![screen image](img/Screenshot.png)

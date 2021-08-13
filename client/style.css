@@ -1,3 +1,10 @@
 *{
     font-family: 'Abel', sans-serif;
 }
+#messages{
+    height:300px;
+    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    background-color: rgb(243, 243, 243);
+}
